@@ -1,0 +1,17 @@
+{
+  "name": "backbone.factotum",
+  "version": "1.0.0",
+  "description": "A factory lib for creating Backbone entities",
+  "main": "backbone.factotum.js",
+  "scripts": {
+    "test": "mocha tests/unit/**/*"
+  },
+  "author": "Sergio Álvarez <sergioalvarezsuarez@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "backbone": "^1.3.3",
+    "chai": "^3.5.0",
+    "eslint": "^2.13.1",
+    "mocha": "^2.5.3"
+  }
+}
