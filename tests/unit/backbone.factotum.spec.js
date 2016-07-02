@@ -1,6 +1,6 @@
 'use strict';
 
-require('chai').should();
+require('./helper');
 
 const Backbone = require('backbone');
 

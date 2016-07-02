@@ -9,7 +9,15 @@ const Factory = function(opts = {}) {
     attrs,
 
     create() {
-      return new this.klass(this.attrs);
+      const evaluatedAttrs = Object.keys(this.attrs).reduce((h, key) => {
+        const attr = this.attrs[key];
+
+        h[key] = typeof attr === 'function' ? attr.call(this) : attr;
+
+        return h;
+      }, {});
+
+      return new this.klass(evaluatedAttrs);
     }
   });
 };
