@@ -9,15 +9,14 @@ const Factotum = require('../../src/backbone.factotum');
 describe('Acceptance', function() {
   describe('working with Backbone', function() {
     const User = Backbone.Model.extend({});
-    const FriendCollection = Backbone.Collection.extend({});
 
     beforeEach(function() {
-      Factotum.define('friendCollection', FriendCollection);
+      Factotum.define('job', User, { name: Factotum.sequence((i) => `Job ${i}`) });
 
       Factotum.define('user', User, {
         id: Factotum.sequence((i) => i),
         name: Factotum.sequence((i) => `User ${i}`),
-        friends: Factotum.create('friendCollection')
+        jobs: Factotum.create('job', 5).map((job) => job.toJSON())
       });
     });
 
@@ -25,10 +24,10 @@ describe('Acceptance', function() {
       Factotum.reset();
     });
 
-    it('creates a user model with a collection of friends', function() {
+    it('creates a user model with a collection of jobs', function() {
       const user = Factotum.create('user');
 
-      user.get('friends').should.exist;
+      user.get('jobs').should.exist;
     });
   });
 });

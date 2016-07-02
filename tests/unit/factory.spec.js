@@ -23,28 +23,28 @@ describe('Factory', function() {
       };
     });
 
-    it('creates a new object from the factory definition', function() {
+    it('creates the requested number of objects', function() {
       const userFactory = Factory(factoryOpts);
 
-      const user = userFactory.create();
+      userFactory.create(5).should.have.lengthOf(5);
+    });
 
-      user.should.be.an.instanceof(User);
+    it('creates new objects of the required type', function() {
+      const userFactory = Factory(factoryOpts);
+
+      userFactory.create(1).forEach((user) => user.should.be.an.instanceof(User));
     });
 
     it('applies the attributes from the factory definition', function() {
       const userFactory = Factory(factoryOpts);
 
-      const user = userFactory.create();
-
-      user.get('name').should.be.equal('Henry Chinaski');
+      userFactory.create(1).forEach((user) => user.get('name').should.be.equal('Henry Chinaski'));
     });
 
     it('works with complex definitions', function() {
       const userFactory = Factory(factoryOpts);
 
-      const user = userFactory.create();
-
-      user.get('email').should.be.equal('employee0@postman.com');
+      userFactory.create(1).forEach((user, i) => user.get('email').should.be.equal(`employee${i}@postman.com`));
     });
   });
 });

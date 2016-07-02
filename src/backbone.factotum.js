@@ -19,8 +19,10 @@ const Factotum = Object.create({
     this.factories[name] = Factory({ klass, attrs });
   },
 
-  create(name) {
-    return this.factories[name].create();
+  create(name, numberOfItems = 1, opts = {}) {
+    const items = this.factories[name].create(numberOfItems, opts);
+
+    return numberOfItems > 1 ? items : items.shift();
   }
 });
 
