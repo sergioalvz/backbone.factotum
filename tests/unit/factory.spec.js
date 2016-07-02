@@ -1,6 +1,6 @@
 'use strict';
 
-require('./helper');
+require('../helper');
 
 const Backbone = require('backbone');
 
