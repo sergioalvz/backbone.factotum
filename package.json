@@ -2,7 +2,7 @@
   "name": "backbone.factotum",
   "version": "1.0.0",
   "description": "A factory lib for creating Backbone entities",
-  "main": "backbone.factotum.js",
+  "main": "src/backbone.factotum.js",
   "scripts": {
     "test": "mocha tests/unit/**/*"
   },

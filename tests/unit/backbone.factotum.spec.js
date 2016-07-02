@@ -1,35 +1,55 @@
 'use strict';
 
+require('chai').should();
+
 const Backbone = require('backbone');
 
-const Factotum = require('../../backbone.factotum');
+const Factotum = require('../../src/backbone.factotum');
 
 describe('Factotum', function() {
-  describe('#define', function() {
-    const User = Backbone.Model.extend({});
+  const User = Backbone.Model.extend({});
 
+  describe('#define', function() {
     beforeEach(function() {
       Factotum.reset();
     });
 
-    it('stores the definition for new factories', function() {
+    it('creates a new entry in the factories object', function() {
       Factotum.define('user', User);
 
       Factotum.factories.should.have.keys('user');
     });
 
-    it('stores the constructor for creating new factories', function() {
+    it('saves the new factory definition', function() {
       Factotum.define('user', User);
 
-      Factotum.factories['user'][0].should.be.equal(User);
+      Factotum.factories['user'].should.be.an.instanceof(Object);
+    });
+  });
+
+  describe('#create', function() {
+    it('creates objects from the factory definition', function() {
+      Factotum.define('user', User);
+
+      const user = Factotum.create('user');
+
+      user.should.be.an.instanceof(User);
+    });
+  });
+
+  describe('#sequence', function() {
+    it('increases by one the counter', function() {
+      const sequence = Factotum.sequence((i) => i);
+
+      sequence().should.be.equal(0);
+      sequence().should.be.equal(1);
+      sequence().should.be.equal(2);
     });
 
-    it('stores the attributes for initializing new factories', function() {
-      const userAttrs = { name: 'Henry Chinaski' };
+    it('returns the defined value', function() {
+      const sequence = Factotum.sequence((i) => `My sequence number ${i}`);
 
-      Factotum.define('user', User, userAttrs);
-
-      Factotum.factories['user'][1].should.be.equal(userAttrs);
+      sequence().should.be.equal('My sequence number 0');
     });
   });
 });
