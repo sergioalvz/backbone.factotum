@@ -8,9 +8,7 @@ const Factotum = Object.create({
   sequence(callback) {
     let counter = 0;
 
-    return () => {
-      return callback.call(this, counter++);
-    };
+    return () => callback.call(this, counter++);
   },
 
   reset() {
