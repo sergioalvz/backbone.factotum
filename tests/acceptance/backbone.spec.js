@@ -33,12 +33,8 @@ describe('Acceptance', function() {
       Factotum.define('user', User, {
         id: Factotum.sequence((i) => i),
         name: Factotum.sequence((i) => `User ${i}`),
-        jobs: Factotum.create('job', 5).map((job) => job.toJSON())
+        jobs: Factotum.create('job', 5)
       });
-    });
-
-    afterEach(function() {
-      Factotum.reset();
     });
 
     it('creates a user model with a collection of jobs', function() {
