@@ -20,6 +20,10 @@ const Factotum = Object.create({
   },
 
   create(name, numberOfItems = 1, opts = {}) {
+    if (typeof numberOfItems === 'object') {      // if the second parameter is an object
+      [opts, numberOfItems] = [numberOfItems, 1]; // we assume they are omitting 'numberOfItems'
+    }
+
     const items = this.factories[name].create(numberOfItems, opts);
 
     return numberOfItems > 1 ? items : items.shift();
