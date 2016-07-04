@@ -25,6 +25,7 @@
     "no-use-before-define": [2, "nofunc"]
   },
   "env": {
+    "browser": true,
     "node": true
   },
   "parserOptions": {

@@ -28,12 +28,31 @@ describe('Factotum', function() {
   });
 
   describe('#create', function() {
-    it('creates objects from the factory definition', function() {
-      Factotum.define('user', User);
+    beforeEach(function() {
+      Factotum.define('user', User, {
+        name: 'Henry Chinaski',
+        email: Factotum.sequence((i) => `employee${i}@postman.com`)
+      });
+    });
 
-      const user = Factotum.create('user');
+    afterEach(function() {
+      Factotum.reset();
+    });
 
-      user.should.be.an.instanceof(User);
+    it('creates the requested number of objects', function() {
+      Factotum.create('user', 5).should.have.lengthOf(5);
+    });
+
+    it('creates new objects of the required type', function() {
+      Factotum.create('user').should.be.an.instanceof(User);
+    });
+
+    it('applies the attributes from the factory definition', function() {
+      Factotum.create('user').get('name').should.be.equal('Henry Chinaski');
+    });
+
+    it('works with complex definitions', function() {
+      Factotum.create('user').get('email').should.be.equal('employee0@postman.com');
     });
   });
 
