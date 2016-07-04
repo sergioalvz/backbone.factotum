@@ -1,35 +1,52 @@
 # Backbone.Factotum
 
-A factory lib for creating JS objects. It is fully-compatible with Backbone and it doesn't have any external dependency.
+A Backbone fully-compatible factory lib for creating JavaScript objects.
 
 ## Example
 
+**factories.js**
+
+```javascript
+/*
+ *
+ * Let's suppose we have defined the following entities somewhere:
+ *
+ * const Job = Backbone.Model.extend({});
+ *
+ * const JobCollection = Backbone.Collection.extend({ model: Job });
+ *
+ * const User = Backbone.Model.extend({
+ *   parse(attrs) {
+ *     this.jobs = new JobCollection(attrs.jobs);
+ *
+ *     return _.omit(attrs, 'jobs');
+ *   }
+ * });
+ *
+ *
+ */
+
+const Factotum = require('backbone.factotum');
+
+const Job = require('../job');
+const User = require('../user');
+
+Factotum.define('job', Job, { name: Factotum.sequence((i) => `Job ${i}`) });
+
+Factotum.define('user', User, {
+  id: Factotum.sequence((i) => i),
+  name: 'Henry Chinaski',
+  jobs: Factotum.create('job', 5)
+});
+```
+
+**user.spec.js**
 ```javascript
 const Factotum = require('backbone.factotum');
 
-const Job = Backbone.Model.extend({});
-
-const JobCollection = Backbone.Collection.extend({ model: Job });
-
-const User = Backbone.Model.extend({
-  parse(attrs) {
-    this.jobs = new JobCollection(attrs.jobs);
-
-    return _.omit(attrs, 'jobs');
-  }
-});
+const JobCollection = require('../jobCollection');
 
 describe('User', function() {
-  beforeEach(function() {
-    Factotum.define('job', Job, { name: Factotum.sequence((i) => `Job ${i}`) });
-
-    Factotum.define('user', User, {
-      id: Factotum.sequence((i) => i),
-      name: 'Henry Chinaski',
-      jobs: Factotum.create('job', 5)
-    });
-  });
-
   it('creates a user model with a collection of jobs', function() {
     const user = Factotum.create('user', { parse: true });
 
@@ -63,7 +80,7 @@ Factotum.define('user', User, {
 const users = Factotum.create('user', 10);
 ```
 
-* Options like `parse` can be bridged from `Factotum` to the required object initialization
+* Backbone options such as `parse` can be bridged from `Factotum` to the required object initialization
 
 ```javascript
 const users = Factotum.create('user', 10, { parse: true });
