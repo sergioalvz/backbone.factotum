@@ -1,11 +1,11 @@
 'use strict';
 
-require('../helper');
+require('../../helper');
 
 const _ = require('underscore');
 const Backbone = require('backbone');
 
-const Factotum = require('../../backbone.factotum');
+const Factotum = require('../../../backbone.factotum');
 
 // =====
 // Some Backbone entities

@@ -4,7 +4,7 @@
   "description": "A Backbone fully-compatible factory lib for creating JavaScript objects",
   "main": "src/backbone.factotum.js",
   "scripts": {
-    "test": "mocha tests/**/*.spec.js"
+    "test": "mocha tests/unit/**/*.spec.js tests/acceptance/node/*.js"
   },
   "author": "Sergio Álvarez <sergioalvarezsuarez@gmail.com>",
   "license": "MIT",
