@@ -6,7 +6,7 @@
 
     window.Backbone.Factotum = factory();
   }
-}(this, function() {
+}(function() {
   'use strict';
 
   const Factory = function(factoryOpts = {}) {

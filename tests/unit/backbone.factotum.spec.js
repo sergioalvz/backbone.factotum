@@ -4,7 +4,7 @@ require('../helper');
 
 const Backbone = require('backbone');
 
-const Factotum = require('../../src/backbone.factotum');
+const Factotum = require('../../backbone.factotum');
 
 describe('Factotum', function() {
   const User = Backbone.Model.extend({});

@@ -2,13 +2,13 @@
 
 require('../helper');
 
-const Backbone = require('backbone');
 const _ = require('underscore');
+const Backbone = require('backbone');
 
-const Factotum = require('../../src/backbone.factotum');
+const Factotum = require('../../backbone.factotum');
 
 // =====
-// Backbone types
+// Some Backbone entities
 // =====
 
 const Job = Backbone.Model.extend({});
