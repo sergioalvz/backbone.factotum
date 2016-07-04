@@ -1,5 +1,7 @@
 # Backbone.Factotum
 
+[![Build Status](https://travis-ci.org/sergioalvz/backbone.factotum.svg?branch=master)](https://travis-ci.org/sergioalvz/backbone.factotum)
+
 A Backbone fully-compatible factory lib for creating JavaScript objects.
 
 ## Example
