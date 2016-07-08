@@ -2,7 +2,7 @@
   "name": "backbone.factotum",
   "version": "1.0.0",
   "description": "A Backbone fully-compatible factory lib for creating JavaScript objects",
-  "main": "src/backbone.factotum.js",
+  "main": "backbone.factotum.js",
   "scripts": {
     "test": "mocha tests/unit/**/*.spec.js tests/acceptance/node/*.js"
   },
@@ -14,5 +14,18 @@
     "eslint": "^2.13.1",
     "mocha": "^2.5.3",
     "underscore": "^1.8.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergioalvz/backbone.factotum.git"
+  },
+  "keywords": [
+    "backbone",
+    "factory",
+    "testing"
+  ],
+  "bugs": {
+    "url": "https://github.com/sergioalvz/backbone.factotum/issues"
+  },
+  "homepage": "https://github.com/sergioalvz/backbone.factotum#readme"
 }
