@@ -18,7 +18,7 @@
       attrs,
 
       create(numberOfItems, opts) {
-        return new Array(numberOfItems).fill().map(() => {
+        return Array.apply(null, Array(numberOfItems)).map(() => {
           const evaluatedAttrs = Object.keys(this.attrs).reduce((h, key) => {
             const attr = this.attrs[key];
 
