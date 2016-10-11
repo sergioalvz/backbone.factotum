@@ -1,6 +1,6 @@
 {
   "name": "backbone.factotum",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Backbone fully-compatible factory lib for creating JavaScript objects",
   "main": "./distribution/backbone.factotum.js",
   "scripts": {
