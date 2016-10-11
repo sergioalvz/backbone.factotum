@@ -2,8 +2,10 @@
   "name": "backbone.factotum",
   "version": "1.0.0",
   "description": "A Backbone fully-compatible factory lib for creating JavaScript objects",
-  "main": "backbone.factotum.js",
+  "main": "./distribution/backbone.factotum.js",
   "scripts": {
+    "build": "babel backbone.factotum.js --out-dir distribution",
+    "prepublish": "npm run build",
     "test": "mocha tests/unit/**/*.spec.js tests/acceptance/node/*.js"
   },
   "author": "Sergio Álvarez <sergioalvarezsuarez@gmail.com>",
